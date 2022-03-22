@@ -3,46 +3,47 @@
     <header>
         <title>Calculatir</title>
         <link rel ="stylesheet" type="text/css" href="calculatir.css">
+        <script src="calculatir.js"></script>
     </header>
     <body>
         <div class="main" id="main">
             <div class="calculatir" id="calculatir">
-                <input type="Text">
+                <input type="Text" id="result" readonly value="0">
                 <div class="row">    
-                    <button id="%" data-value="%"><img class="icon icons8-Percentage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABK0lEQVRYR+2WYQ3CMBCFvznAAgrAAeAAHOAACYADHCABJIACcAA4wAHkkpYM6K7XZs3+rAnZYNf169u7Nyo6HlXH69MD9ArEFJgDK2AKnICtO2re3bk5D2AMPLViDUAWPwQmzxQIWfDi5iyAY6zLNIArMHK73gDyWQNnp0jo3qLSJFLzNU8DeLnKek3oN3/DJbB3X4bAPbZ7ud4WwAC4AXIUn4haptEWQJLx6mRtACQbzwrgTShyellDJkw2nhXA0oZZxrMCSJ0EkCjgW0vOZccyso2XApCTeEnpGYviJoAm41kemzmItN03GS85PXMU0IyXmp7J/4hixisOEEu8ogCWxCsKYEk8a3p+DG41oTXxirRhzHi/7aql519rWxUwvdtzinqAXoHOFXgD+J9gIZOwvCMAAAAASUVORK5CYII="></button>
-                    <button id="CE" data-value="CE"><b>CE</b></button>
-                    <button id="C" data-value="C"><b>C</b></button>
-                    <button id="clear" data-value="clear"><img class="icon icons8-Clear-Symbol" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABDklEQVRYR+2W4Q3CIBSErxu4iY6gm+hmbqIj6CZuUHNJMeQFeAelaUzoT8LjPo570Ak7f9PO+hgAw4G/cuAA4AHg1KFzfhtXHegpTv4qgFj8DeAM4NPowrzUyQA9xaldBaCIc451IzUWDJMBFPE7gCOASwQR6l4AboljkgAUcc55LgAUIwS/0CW5rLgAinjYmIXgOFu0FNQiQI14CoJjXpe4ANZWr93s/RCOI1cnHYEKYR2jAwxlCcIF4CKpgKVazQaOtR68BKBCsA0ZuvhmDPB04drahrmUx/0ez9nkIqqBqHkW5COIF1UyoUI0AdhMqGKlefJrmHNiLUQTwFrRZL36R7SJOBcdAMOB3R34AqM1YCEu+sgCAAAAAElFTkSuQmCC"></button>
+                    <button id="%" class="operation" data-value="%"><img class="icon icons8-Percentage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABK0lEQVRYR+2WYQ3CMBCFvznAAgrAAeAAHOAACYADHCABJIACcAA4wAHkkpYM6K7XZs3+rAnZYNf169u7Nyo6HlXH69MD9ArEFJgDK2AKnICtO2re3bk5D2AMPLViDUAWPwQmzxQIWfDi5iyAY6zLNIArMHK73gDyWQNnp0jo3qLSJFLzNU8DeLnKek3oN3/DJbB3X4bAPbZ7ud4WwAC4AXIUn4haptEWQJLx6mRtACQbzwrgTShyellDJkw2nhXA0oZZxrMCSJ0EkCjgW0vOZccyso2XApCTeEnpGYviJoAm41kemzmItN03GS85PXMU0IyXmp7J/4hixisOEEu8ogCWxCsKYEk8a3p+DG41oTXxirRhzHi/7aql519rWxUwvdtzinqAXoHOFXgD+J9gIZOwvCMAAAAASUVORK5CYII="></button>
+                    <button id="CE" data-value="CE" onclick="resetcurrentnumber();"><b>CE</b></button>
+                    <button id="C" data-value="C" onclick="resetallnumbers();"><b>C</b></button>
+                    <button id="clear" data-value="clear" onclick="deletecharacter();"><img class="icon icons8-Clear-Symbol" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABDklEQVRYR+2W4Q3CIBSErxu4iY6gm+hmbqIj6CZuUHNJMeQFeAelaUzoT8LjPo570Ak7f9PO+hgAw4G/cuAA4AHg1KFzfhtXHegpTv4qgFj8DeAM4NPowrzUyQA9xaldBaCIc451IzUWDJMBFPE7gCOASwQR6l4AboljkgAUcc55LgAUIwS/0CW5rLgAinjYmIXgOFu0FNQiQI14CoJjXpe4ANZWr93s/RCOI1cnHYEKYR2jAwxlCcIF4CKpgKVazQaOtR68BKBCsA0ZuvhmDPB04drahrmUx/0ez9nkIqqBqHkW5COIF1UyoUI0AdhMqGKlefJrmHNiLUQTwFrRZL36R7SJOBcdAMOB3R34AqM1YCEu+sgCAAAAAElFTkSuQmCC"></button>
                 </div>
                 <div class="row">
-                    <button id="1/2" data-value="1/x"><b>1/x</b></button>
-                    <button id="x^2" data-value="x^2"><b>x^2</b></button>
-                    <button id="sqr" data-value="sqr"><img class="icon icons8-Square-Root" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABP0lEQVRYR+3V4S0FQRQF4O9VgApQATrQASpABXSAClABOqCCRwWoABWgAnKTnWSzeV5mdkf2z55fm83sPWfPuXfuzMiYjcxvEjA5UNuBd6z/0dgLuWoK2MV8yVT9u4BbHOIC57njXcuBVXw2pJuIKLJQS8ARbvCA/Szm5lAtAS/YwjEiimzUELCNZ3wjoihCDQFXOME1TovYqbILvrCCHUQURRjqQGq+V0QUxVgm4KdVLcYqxquLe+z1ab5UKFdAnO92+AbemkJriCiKkRNBsrnrQjTcJe4QZ3ohR0AUTkum7UJ6d4CIohdyBXRdSIvnAxFFb+QKaLsQfxzXbfHiWaSyREBy4bEZubj1ihbPUAFBGLnHpRN4QkQxCCUOBFHs+bOGsXjxDHUgvk8upOdBfx8flzowmLBbYBIwOTC6A7+1/zEhMa617wAAAABJRU5ErkJggg=="></button>
-                    <button id="/" data-value="/"><img class="icon icons8-Divide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAo0lEQVRYR+2VSxGDMBRFTxTUAkioklrAQSVAHSChjmqhdYCDMm8mCz7DIp/yurisQ+6Zk5u8gPMXnPMRgAyUGBiBWyzxE3jkFDoXwMLvm0ADGFIhcgEm4AJcY+ALeAOtJ8AHaM4CMNW95xFYtkF0ixImn7/9m9uBVNOH6wVwZOBbzfF6o13e3wL8SMB+W5WwxICmoaahpmGVx6rkGgpABqoYmAH2Lh4hfK3KfwAAAABJRU5ErkJggg=="></button>
+                    <button id="1/x" class="operation" data-value="1/x" onclick="Operation('1/x');"><b>1/x</b></button>
+                    <button id="x^2" class="operation" data-value="x^2" onclick="Operation('x^2');"><b>x^2</b></button>
+                    <button id="sqr" class="operation" data-value="sqr" onclick="Operation('sqr');"><img class="icon icons8-Square-Root" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABP0lEQVRYR+3V4S0FQRQF4O9VgApQATrQASpABXSAClABOqCCRwWoABWgAnKTnWSzeV5mdkf2z55fm83sPWfPuXfuzMiYjcxvEjA5UNuBd6z/0dgLuWoK2MV8yVT9u4BbHOIC57njXcuBVXw2pJuIKLJQS8ARbvCA/Szm5lAtAS/YwjEiimzUELCNZ3wjoihCDQFXOME1TovYqbILvrCCHUQURRjqQGq+V0QUxVgm4KdVLcYqxquLe+z1ab5UKFdAnO92+AbemkJriCiKkRNBsrnrQjTcJe4QZ3ohR0AUTkum7UJ6d4CIohdyBXRdSIvnAxFFb+QKaLsQfxzXbfHiWaSyREBy4bEZubj1ihbPUAFBGLnHpRN4QkQxCCUOBFHs+bOGsXjxDHUgvk8upOdBfx8flzowmLBbYBIwOTC6A7+1/zEhMa617wAAAABJRU5ErkJggg=="></button>
+                    <button id="/" class="operation" data-value="/"><img class="icon icons8-Divide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAo0lEQVRYR+2VSxGDMBRFTxTUAkioklrAQSVAHSChjmqhdYCDMm8mCz7DIp/yurisQ+6Zk5u8gPMXnPMRgAyUGBiBWyzxE3jkFDoXwMLvm0ADGFIhcgEm4AJcY+ALeAOtJ8AHaM4CMNW95xFYtkF0ixImn7/9m9uBVNOH6wVwZOBbzfF6o13e3wL8SMB+W5WwxICmoaahpmGVx6rkGgpABqoYmAH2Lh4hfK3KfwAAAABJRU5ErkJggg=="></button>
                 </div>
                 <div class="row">
-                    <button class ="button1" id="7" data-value="7"><b>7</b></button>
-                    <button class ="button1" id="8" data-value="8"><b>8</b></button>
-                    <button class ="button1" id="9" data-value="9"><b>9</b></button>
-                    <button id="*" data-value="*"><b>X</b></button>
+                    <button class ="button1" id="7" data-value="7" onclick="insert(7);"><b>7</b></button>
+                    <button class ="button1" id="8" data-value="8" onclick="insert(8);"><b>8</b></button>
+                    <button class ="button1" id="9" data-value="9" onclick="insert(9);"><b>9</b></button>
+                    <button id="*" class="operation" data-value="*"><b>X</b></button>
                 </div>
                 <div class="row">
-                    <button class ="button1" id="4" data-value="4"><b>4</b></button>
-                    <button class ="button1" id="5" data-value="5"><b>5</b></button>
-                    <button class ="button1" id="6" data-value="6"><b>6</b></button>
-                    <button id="-" data-value="-"><b>-</b></button>
+                    <button class ="button1" id="4" data-value="4" onclick="insert(4);"><b>4</b></button>
+                    <button class ="button1" id="5" data-value="5" onclick="insert(5);"><b>5</b></button>
+                    <button class ="button1" id="6" data-value="6" onclick="insert(6);"><b>6</b></button>
+                    <button id="-" class="operation" data-value="-"><b>-</b></button>
                 </div>
                 <div class="row">
-                    <button class ="button1" id="1" data-value="1"><b>1</b></button>
-                    <button class ="button1" id="2" data-value="2"><b>2</b></button>
-                    <button class ="button1" id="3" data-value="3"><b>3</b></button>
-                    <button id="+" data-value="+"><b>+</b></button>
+                    <button class ="button1" id="1" data-value="1" onclick="insert(1);"><b>1</b></button>
+                    <button class ="button1" id="2" data-value="2" onclick="insert(2);"><b>2</b></button>
+                    <button class ="button1" id="3" data-value="3" onclick="insert(3);"><b>3</b></button>
+                    <button id="+" class="operation" data-value="+"><b>+</b></button>
                 </div>
                 <div class="row"> 
-                    <button class ="button1" id="+/-" data-value="+/-"><img class="icon icons8-Plus-Minus" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAYUlEQVRYR+2VMQ4AIAgD4f+P1gUdCakx1VB3pL0UcCM/J/c3CfiewIgMwUbgwmgsASLQg8ByiW7tdNIqY0gXkDnvkQEREIGnCaDLaddVFtFxk+wDCagQoN8CugCFUASuEpjXIBIhP3OSdgAAAABJRU5ErkJggg=="></button>
-                    <button class ="button1" id="0" data-value="0"><b>0</b></button>
-                    <button class ="button1" id="." data-value="."><b>.</b></button>
-                    <button><b>=</b></button>
+                    <button class ="button1 operation" id="+/-" data-value="+/-" onclick="changesign();"><img class="icon icons8-Plus-Minus" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAYUlEQVRYR+2VMQ4AIAgD4f+P1gUdCakx1VB3pL0UcCM/J/c3CfiewIgMwUbgwmgsASLQg8ByiW7tdNIqY0gXkDnvkQEREIGnCaDLaddVFtFxk+wDCagQoN8CugCFUASuEpjXIBIhP3OSdgAAAABJRU5ErkJggg=="></button>
+                    <button class ="button1" id="0" data-value="0" onclick="insert(0);"><b>0</b></button>
+                    <button class ="button1" id="." data-value="." onclick="insert('.');"><b>.</b></button>
+                    <button class="operation"><b>=</b></button>
                 </div>
             </div>
         </div>
