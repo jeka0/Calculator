@@ -61,7 +61,7 @@ function resetallnumbers()
 }
 function Operation(op) {
     nowdigit = document.getElementById("result").value;
-    if(finishednumber == true)oper = "";
+    if(finishednumber == true && fa)oper = "";
     finishednumber = true;
     if(oper==""||!fa)document.getElementById("result2").value = "";
     switch (op) {
@@ -111,8 +111,11 @@ function Operation(op) {
 function savedigit(num)
 {
     lastdigit = Number(num);
+    if(!err)
+    {
     if(f)document.getElementById("result2").value= lastdigit;else f=true;
     resetcurrentnumber();
+    }{lastdigit = num;f=true;}
 }
 
 function operationOnTwoNumbers(op)
@@ -156,6 +159,7 @@ function multiply()
 }
 function division()
 {
+    if(nowdigit==0){error(); return "Division by zero is not possible";}
     return lastdigit / nowdigit;
 }
 function inverse(num) {
