@@ -104,6 +104,7 @@ function Operation(op) {
     } 
     if(oper!=""){savedigit(operationOnTwoNumbers(oper));}else savedigit(nowdigit);
     document.getElementById("result").value = lastdigit;
+    fa = true;
     oper = op;
     document.getElementById("result2").value+= ' ' + oper;
 }
