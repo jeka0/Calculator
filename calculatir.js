@@ -9,6 +9,12 @@ var f = true;
 var flag = true;
 var finishednumber = false;
 var limit = 20;
+document.addEventListener("keydown", function(event){
+    var key= event.key;
+    if(event.keyCode == 8)key="clear";else 
+    if(event.keyCode == 27)key="C";
+    document.getElementById(key).click();
+});
 function insert(num)
 {
     var res = document.getElementById("result");
@@ -147,15 +153,21 @@ function equals()
     document.getElementById("result").value = lastdigit;}
 }
 function sum() {
-    return Number(lastdigit) + Number(nowdigit);
+    var res = Number(lastdigit) + Number(nowdigit);
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function difference()
 {
-    return lastdigit - nowdigit;
+    var res = lastdigit - nowdigit;
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function multiply()
 {
-    return lastdigit * nowdigit;
+    var res = lastdigit * nowdigit;
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function division()
 {
@@ -167,7 +179,9 @@ function inverse(num) {
     return 1 / Number(num);
 }
 function square(num) {
-    return Math.pow(Number(num), 2);
+    var res = Math.pow(Number(num), 2);
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function sqroot(num) {
     if(num<0){error(); return "Invalid input";}
@@ -179,7 +193,9 @@ function atan(num)
 }
 function cosh(num)
 {
-    return Math.cosh(num);
+    var res = Math.cosh(num);
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function degrees_to_radians(degrees)
 {
@@ -192,7 +208,9 @@ function ceil(num)
 }
 function exp(num)
 {
-    return Math.exp(num);
+    var res = Math.exp(num);
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function error()
 {
