@@ -6,6 +6,7 @@ var oper = "";
 var err = false;
 var fa = true;
 var f = true;
+var clickbut=false;
 var flag = true;
 var finishednumber = false;
 var limit = 20;
@@ -21,7 +22,7 @@ function insert(num)
     if(err){unerror();resetallnumbers()}
     if(count<limit)
     {
-        if(finishednumber || res.value=='0' && num!='.'){res.value="";count=0;finishednumber=false;flag=true;}
+        if(finishednumber || res.value=='0' && num!='.'||finishednumber){res.value="";count=0;finishednumber=false;flag=true;}
         if(num!='.'||flag){res.value+=num;count++;}
         if(num=='.')flag=false;
     }
@@ -50,9 +51,23 @@ function changesign()
  
     document.getElementById("result").value = str;
 }
+function dellast()
+{
+    var str = document.getElementById("result2").value
+    if(str!="")
+    {
+    str = str.split(" ");
+    str.pop();
+    str = str.join(" ");
+    document.getElementById("result2").value = str;
+    }
+}
+function reset()
+{clickbut=true;resetcurrentnumber();clickbut=false}
 function resetcurrentnumber()
 {
     if(err){unerror();resetallnumbers()}
+    if(finishednumber&&!fa&&clickbut){dellast();finishednumber=false;fa = true;}
     flag=true;
     count=1;
     nowdigit = 0;
@@ -72,39 +87,39 @@ function Operation(op) {
     if(oper==""||!fa)document.getElementById("result2").value = "";
     switch (op) {
         case "%":
-            document.getElementById("result2").value+= document.getElementById("result").value+'%';fa=false;
+            document.getElementById("result2").value+= ' ' +document.getElementById("result").value+'%';fa=false;
             document.getElementById("result").value = percent();
             return;
         case "sqr":
-            document.getElementById("result2").value+= 'sqr('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' sqr('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = sqroot(nowdigit);
             return;
         case "x^2":
-            document.getElementById("result2").value+= document.getElementById("result").value+'^2';fa=false;
+            document.getElementById("result2").value+= ' ' +document.getElementById("result").value+'^2';fa=false;
             document.getElementById("result").value = square(nowdigit);
             return;
         case "1/x":
-            document.getElementById("result2").value+= '1/'+document.getElementById("result").value;fa=false;
+            document.getElementById("result2").value+= ' 1/'+document.getElementById("result").value;fa=false;
             document.getElementById("result").value = inverse(nowdigit);
             return;
         case "atan":
-            document.getElementById("result2").value+= 'atan('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' atan('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = atan(nowdigit);
             return;
         case "cosh":
-            document.getElementById("result2").value+= 'cosh('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' cosh('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = cosh(nowdigit);
             return;
         case "degrees_to_radians":
-            document.getElementById("result2").value+= 'degrees_to_radians('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' degrees_to_radians('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = degrees_to_radians(nowdigit);
             return;
         case "ceil":
-            document.getElementById("result2").value+= 'ceil('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' ceil('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = ceil(nowdigit);
             return;
         case "exp":
-            document.getElementById("result2").value+= 'exp('+document.getElementById("result").value+')';fa=false;
+            document.getElementById("result2").value+= ' exp('+document.getElementById("result").value+')';fa=false;
             document.getElementById("result").value = exp(nowdigit);
             return;
     } 
@@ -139,7 +154,9 @@ function operationOnTwoNumbers(op)
 }
 function percent()
 {
-    return (lastdigit*nowdigit)/100;
+    var res = (lastdigit*nowdigit)/100;
+    if(res=="Infinity" || res=="-Infinity"){error(); return "overflow";}
+    return res;
 }
 function equals()
 {
